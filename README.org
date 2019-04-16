@@ -42,6 +42,7 @@ File me [[https://github.com/dennyzhang/cheatsheet-docker-A4/issues][Issues]] or
 |-------------------------------+------------------------------------------------------------------------------------------------------------|
 | Start a ubuntu test env       | =docker run ubuntu:16.04 /bin/echo hello world=                                                            |
 | Start a ubuntu 18.04 test env | =docker run ubuntu:18.04 /bin/echo hello world=                                                            |
+| [[https://hub.docker.com/_/debian][Start a debian9 test env]]      | =docker run debian:9 /bin/echo hello world=                                                                |
 | Start a centos test env       | =docker run centos:centos6 /bin/echo hello world=                                                          |
 | [[https://github.com/jenkinsci/docker/blob/master/README.md][Start a jenkins server]]        | =docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts=                                               |
 | Start a nginx server          | =docker run -t -d -p 8080:80 --name nginx-test nginx=                                                      |
@@ -73,7 +74,7 @@ File me [[https://github.com/dennyzhang/cheatsheet-docker-A4/issues][Issues]] or
 | Name                           | Summary                                                  |
 |--------------------------------+----------------------------------------------------------|
 | Delete all containers          | [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/delete-all-containers.sh#L13][delete-all-containers.sh]]                                 |
-| Remove unused docker images    | [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/delete-unused-images.sh][delete-unused-images.sh]]                                  |
+| Remove unused docker images    | [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/delete-unused-images.sh#L13][delete-unused-images.sh]]                                  |
 | Remove the specified image     | =docker rmi <imagename>=                                 |
 | Remove all docker images       | =docker rmi $(docker images -q)=                         |
 | Remove orphaned docker volumes | =docker volume rm $(docker volume ls -qf dangling=true)= |
@@ -84,15 +85,15 @@ File me [[https://github.com/dennyzhang/cheatsheet-docker-A4/issues][Issues]] or
 |----------------------------------+----------------------------------------------------------------------------------|
 | Change entrypoint to run nothing | =entrypoint: ["tail", "-f", "/dev/null"]=                                        |
 | [[https://serverfault.com/questions/683605/docker-container-time-timezone-will-not-reflect-changes/683651#683651][Set timezone in Dockerfile]]       | =RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone= |
-| Define multiple line command     | [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/Dockerfile-example-multiline][Dockerfile-example-multiline]]                                                     |
+| Define multiple line command     | [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/Dockerfile-example-multiline][GitHub: Dockerfile-example-multiline]]                                             |
 ** Docker Compose
-| Name                             | Summary                                                                              |
-|----------------------------------+--------------------------------------------------------------------------------------|
-| Change restart policy            | =restart: always=, [[https://docs.docker.com/compose/compose-file/#restart_policy][Link: Compose file version 3 reference]]                            |
-| Mount file as volume             | =$PWD/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro= [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/samples/mount-file.yml][samples/mount-file.yml]] |
-| Start compose env                | =docker-compose up=, =docker-compose up -d=                                          |
-| Stop compose env                 | =docker-compose down=, =docker-compose down -v=                                      |
-| Check logs                       | =docker-compose logs=                                                                |
+| Name                  | Summary                                                                                     |
+|-----------------------+---------------------------------------------------------------------------------------------|
+| Change restart policy | =restart: always=, [[https://docs.docker.com/compose/compose-file/#restart_policy][Link: Compose file version 3 reference]]                                   |
+| Mount file as volume  | =$PWD/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro= [[https://github.com/dennyzhang/cheatsheet-docker-A4/blob/master/sample-mount-file.yml][GitHub: sample-mount-file.yml]] |
+| Start compose env     | =docker-compose up=, =docker-compose up -d=                                                 |
+| Stop compose env      | =docker-compose down=, =docker-compose down -v=                                             |
+| Check logs            | =docker-compose logs=                                                                       |
 ** Docker Containers
 | Name                                        | Summary                                                       |
 |---------------------------------------------+---------------------------------------------------------------|
